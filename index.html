@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prabhat — Data Engineering Portfolio</title>
+<title>Prabhat — Data Science Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #12141C;
-    --bg-panel: #181B26;
-    --bg-panel-raised: #1E2230;
-    --text: #EDEDF0;
-    --text-muted: #8B8FA3;
-    --border: #262A38;
-    --amber: #7FA893;
-    --teal: #8B93B8;
+    --bg: #FAF9F5;
+    --bg-panel: #FFFFFF;
+    --bg-panel-raised: #F1EFE7;
+    --text: #21242E;
+    --text-muted: #6B6F7E;
+    --border: #E4E1D6;
+    --sage: #4E7A64;
+    --slate: #545F87;
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'IBM Plex Sans', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
@@ -30,80 +30,55 @@
     color:var(--text);
     font-family:var(--font-body);
     line-height:1.6;
-    overflow-x:hidden;
   }
 
   a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 28px; }
 
-  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
-
-  /* ---------- Pipeline nav ---------- */
-  .pipeline-nav{
+  /* ---------- Nav ---------- */
+  .nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(16,27,35,0.92);
+    background:rgba(250,249,245,0.88);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--border);
   }
-  .pipeline-track{
-    max-width:920px; margin:0 auto; padding:16px 28px;
+  .nav-inner{
+    max-width:900px; margin:0 auto; padding:18px 28px;
     display:flex; align-items:center; justify-content:space-between;
-    position:relative;
   }
-  .pipeline-line{
-    position:absolute; left:28px; right:28px; top:50%;
-    height:1px; background:var(--border); z-index:0;
+  .nav-logo{
+    font-family:var(--font-mono); font-size:14px; color:var(--text);
+    letter-spacing:.02em;
   }
-  .pipeline-fill{
-    position:absolute; left:28px; top:50%; height:1px;
-    background:linear-gradient(90deg, var(--amber), var(--teal));
-    z-index:1; width:0%; transition:width .4s ease;
+  .nav-logo span{ color:var(--sage); }
+  .nav-links{ display:flex; gap:28px; }
+  .nav-links a{
+    font-family:var(--font-mono); font-size:12px; color:var(--text-muted);
+    letter-spacing:.06em; text-transform:uppercase; transition:color .2s ease;
   }
-  .stage{
-    position:relative; z-index:2; display:flex; flex-direction:column;
-    align-items:center; gap:6px; background:var(--bg); padding:0 10px;
-    cursor:pointer;
+  .nav-links a:hover{ color:var(--sage); }
+  .nav-toggle{ display:none; }
+  @media(max-width:640px){
+    .nav-links{ display:none; }
   }
-  .stage .dot{
-    width:9px; height:9px; border-radius:50%; background:var(--border);
-    border:1px solid var(--text-muted); transition:all .3s ease;
-  }
-  .stage.active .dot{
-    background:var(--amber); border-color:var(--amber);
-    box-shadow:0 0 0 4px rgba(127,168,147,0.18);
-  }
-  .stage label{
-    font-family:var(--font-mono); font-size:10px; letter-spacing:.12em;
-    color:var(--text-muted); text-transform:uppercase; cursor:pointer;
-  }
-  .stage.active label{ color:var(--amber); }
-  .logo{
-    font-family:var(--font-mono); font-size:13px; color:var(--teal);
-    letter-spacing:.05em; display:none;
-  }
-  @media(min-width:640px){ .logo{ display:block; } }
 
-  /* ---------- Hero ---------- */
-  .hero{
-    padding:120px 0 90px;
-    position:relative;
-  }
+  /* ---------- Hero / Intro ---------- */
+  .hero{ padding:100px 0 70px; }
   .eyebrow{
-    font-family:var(--font-mono); font-size:12px; color:var(--teal);
+    font-family:var(--font-mono); font-size:12px; color:var(--slate);
     letter-spacing:.15em; text-transform:uppercase; margin-bottom:20px;
     display:flex; align-items:center; gap:10px;
   }
-  .eyebrow::before{
-    content:''; width:24px; height:1px; background:var(--teal);
-  }
+  .eyebrow::before{ content:''; width:24px; height:1px; background:var(--slate); }
   h1{
     font-family:var(--font-display); font-weight:700;
-    font-size:clamp(2.4rem, 6vw, 4.2rem); line-height:1.05;
-    letter-spacing:-.02em; margin-bottom:24px;
+    font-size:clamp(2.2rem, 5.5vw, 3.6rem); line-height:1.1;
+    letter-spacing:-.02em; margin-bottom:22px;
   }
-  h1 .accent{ color:var(--amber); }
+  h1 .accent{ color:var(--sage); }
   .hero-sub{
-    font-size:clamp(1rem, 2vw, 1.2rem); color:var(--text-muted);
-    max-width:560px; margin-bottom:36px;
+    font-size:clamp(1rem, 2vw, 1.15rem); color:var(--text-muted);
+    max-width:580px; margin-bottom:32px;
   }
   .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; }
   .btn{
@@ -111,60 +86,56 @@
     border-radius:3px; letter-spacing:.03em; transition:all .25s ease;
     border:1px solid var(--border);
   }
-  .btn-primary{ background:var(--amber); color:#101B23; font-weight:500; border-color:var(--amber); }
-  .btn-primary:hover{ background:#eba872; }
+  .btn-primary{ background:var(--sage); color:#FAF9F5; font-weight:500; border-color:var(--sage); }
+  .btn-primary:hover{ background:#93bba6; }
   .btn-ghost{ color:var(--text); }
-  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
-
-  /* flowing stream visual under hero */
-  .stream{
-    margin-top:70px; height:60px; position:relative;
-    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-  }
-  .stream svg{ width:100%; height:100%; display:block; }
-  .particle{ animation:flow 4.5s linear infinite; }
-  @keyframes flow{
-    from{ transform:translateX(-6%); }
-    to{ transform:translateX(106%); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .particle{ animation:none; }
-    html{ scroll-behavior:auto; }
-  }
+  .btn-ghost:hover{ border-color:var(--slate); color:var(--slate); }
 
   /* ---------- Section shared ---------- */
-  section{ padding:90px 0; border-top:1px solid var(--border); }
-  .section-head{ margin-bottom:48px; }
+  section{ padding:80px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:44px; }
   .stage-label{
-    font-family:var(--font-mono); font-size:12px; color:var(--amber);
+    font-family:var(--font-mono); font-size:12px; color:var(--sage);
     letter-spacing:.15em; text-transform:uppercase; margin-bottom:10px;
   }
   h2{
-    font-family:var(--font-display); font-size:clamp(1.6rem, 3vw, 2.2rem);
+    font-family:var(--font-display); font-size:clamp(1.5rem, 3vw, 2rem);
     font-weight:600;
   }
   .lede{ color:var(--text-muted); max-width:600px; margin-top:14px; }
 
-  /* ---------- About ---------- */
-  .about-grid{ display:grid; grid-template-columns:1fr; gap:40px; }
-  @media(min-width:720px){ .about-grid{ grid-template-columns: 1.3fr 1fr; } }
-  .about-text p{ margin-bottom:16px; color:var(--text-muted); }
-  .about-text strong{ color:var(--text); font-weight:600; }
-  .focus-card{
-    background:var(--bg-panel); border:1px solid var(--border); border-radius:6px;
-    padding:22px;
+  /* ---------- Education & Experience (resume-style entries) ---------- */
+  .entry{
+    display:grid; grid-template-columns:1fr; gap:6px;
+    padding:26px 0; border-bottom:1px solid var(--border);
   }
-  .focus-card h3{
-    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em;
-    color:var(--teal); text-transform:uppercase; margin-bottom:14px;
+  .entry:first-child{ padding-top:0; }
+  .entry:last-child{ border-bottom:none; padding-bottom:0; }
+  @media(min-width:680px){ .entry{ grid-template-columns:170px 1fr; gap:28px; } }
+  .entry-meta{
+    font-family:var(--font-mono); font-size:12px; color:var(--text-muted);
+    letter-spacing:.03em; padding-top:3px;
   }
-  .focus-card ul{ list-style:none; }
-  .focus-card li{
-    font-size:14px; color:var(--text-muted); padding:8px 0;
-    border-bottom:1px solid var(--border); display:flex; justify-content:space-between;
+  .entry-body h3{
+    font-family:var(--font-display); font-size:1.15rem; font-weight:600;
+    margin-bottom:4px;
   }
-  .focus-card li:last-child{ border-bottom:none; }
-  .focus-card li span{ color:var(--text); font-family:var(--font-mono); font-size:12px; }
+  .entry-org{
+    font-size:13px; color:var(--slate); margin-bottom:10px; font-family:var(--font-mono);
+  }
+  .entry-body ul{ list-style:none; }
+  .entry-body li{
+    font-size:14.5px; color:var(--text-muted); position:relative;
+    padding-left:16px; margin-bottom:6px;
+  }
+  .entry-body li::before{
+    content:'—'; position:absolute; left:0; color:var(--border);
+  }
+  .entry-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .entry-tags span{
+    font-family:var(--font-mono); font-size:11px; color:var(--sage);
+    border:1px solid rgba(78,122,100,0.28); padding:4px 9px; border-radius:3px;
+  }
 
   /* ---------- Skills ---------- */
   .skill-groups{ display:grid; grid-template-columns:1fr; gap:20px; }
@@ -174,7 +145,7 @@
   }
   .skill-group h3{
     font-family:var(--font-mono); font-size:11px; letter-spacing:.1em;
-    color:var(--amber); text-transform:uppercase; margin-bottom:16px;
+    color:var(--slate); text-transform:uppercase; margin-bottom:16px;
   }
   .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
   .chip{
@@ -185,31 +156,29 @@
   /* ---------- Projects ---------- */
   .project{
     display:grid; grid-template-columns:1fr; gap:16px;
-    padding:32px 0; border-bottom:1px solid var(--border);
-    position:relative;
+    padding:30px 0; border-bottom:1px solid var(--border);
   }
   .project:first-child{ padding-top:0; }
-  .project:last-child{ border-bottom:none; }
+  .project:last-child{ border-bottom:none; padding-bottom:0; }
   @media(min-width:720px){ .project{ grid-template-columns: 140px 1fr; gap:32px; } }
-  .project-stage{
+  .project-tag{
     font-family:var(--font-mono); font-size:11px; color:var(--text-muted);
     letter-spacing:.1em; text-transform:uppercase; padding-top:4px;
   }
-  .project-stage b{ display:block; color:var(--teal); font-size:13px; margin-bottom:4px; }
   .project h3{
-    font-family:var(--font-display); font-size:1.3rem; font-weight:600; margin-bottom:10px;
+    font-family:var(--font-display); font-size:1.25rem; font-weight:600; margin-bottom:10px;
   }
   .project p{ color:var(--text-muted); margin-bottom:14px; max-width:600px; }
   .stack-row{ display:flex; flex-wrap:wrap; gap:8px; }
   .stack-row span{
-    font-family:var(--font-mono); font-size:11px; color:var(--amber);
-    border:1px solid rgba(127,168,147,0.35); padding:4px 9px; border-radius:3px;
+    font-family:var(--font-mono); font-size:11px; color:var(--slate);
+    border:1px solid rgba(84,95,135,0.28); padding:4px 9px; border-radius:3px;
   }
 
   /* ---------- Contact ---------- */
   .contact-panel{
     background:var(--bg-panel); border:1px solid var(--border); border-radius:8px;
-    padding:44px; text-align:left;
+    padding:44px;
   }
   .contact-panel h2{ margin-bottom:14px; }
   .contact-panel .lede{ margin-bottom:30px; }
@@ -223,15 +192,16 @@
 </head>
 <body>
 
-<nav class="pipeline-nav">
-  <div class="pipeline-track">
-    <span class="logo">prabhat<span style="color:var(--amber)">.dev</span></span>
-    <div class="pipeline-line"></div>
-    <div class="pipeline-fill" id="pipelineFill"></div>
-    <div class="stage" data-target="about"><span class="dot"></span><label>Ingest</label></div>
-    <div class="stage" data-target="skills"><span class="dot"></span><label>Transform</label></div>
-    <div class="stage" data-target="projects"><span class="dot"></span><label>Analyze</label></div>
-    <div class="stage" data-target="contact"><span class="dot"></span><label>Deploy</label></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">prabhat<span>.dev</span></div>
+    <div class="nav-links">
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
 </nav>
 
@@ -244,35 +214,84 @@
       <a class="btn btn-primary" href="#projects">View projects</a>
       <a class="btn btn-ghost" href="#contact">Get in touch</a>
     </div>
-
-    <div class="stream" aria-hidden="true">
-      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
-        <line x1="0" y1="30" x2="1000" y2="30" stroke="#24343E" stroke-width="1"/>
-        <circle class="particle" cx="0" cy="30" r="4" fill="#7FA893" style="animation-delay:0s"/>
-        <circle class="particle" cx="0" cy="30" r="3" fill="#8B93B8" style="animation-delay:1.2s"/>
-        <circle class="particle" cx="0" cy="30" r="3.5" fill="#7FA893" style="animation-delay:2.4s"/>
-        <circle class="particle" cx="0" cy="30" r="2.5" fill="#8B93B8" style="animation-delay:3.4s"/>
-      </svg>
-    </div>
   </div>
 </header>
 
-<section id="about">
+<section id="education">
   <div class="wrap">
-    <div class="about-grid">
-      <div class="about-text">
-        <div class="stage-label">01 · Ingest</div>
-        <h2>About</h2>
-        <p style="margin-top:18px;">I study data science at TU Wien, where coursework spans <strong>statistical computing, machine learning, databases, and large-scale data processing</strong>. I like working through the full lifecycle of a question — from survey design and statistical modeling, to building an ML pipeline, to visualizing what it all means.</p>
-        <p>Outside coursework, I build small, practical tools aimed at real problems I run into — including a platform to help improve speech recognition for the Nepali language, and an app for scanning and organizing bills automatically.</p>
-      </div>
-      <div class="focus-card">
-        <h3>Currently</h3>
+    <div class="section-head">
+      <div class="stage-label">Education</div>
+      <h2>Where I've studied</h2>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">2024 — Present</div>
+      <div class="entry-body">
+        <h3>TU Wien</h3>
+        <div class="entry-org">Data Science, MSc / BSc — Vienna, Austria</div>
         <ul>
-          <li>Social media & productivity study <span>R Markdown</span></li>
-          <li>Review sentiment pipeline <span>PySpark · AWS</span></li>
-          <li>NepaliVoice ASR platform <span>FastAPI</span></li>
+          <li>Coursework spanning statistical computing, machine learning, databases, and large-scale data processing</li>
+          <li>Hands-on work with Hadoop clusters, PySpark, and serverless AWS pipelines</li>
         </ul>
+        <div class="entry-tags">
+          <span>Statistical Computing</span><span>Databases</span><span>Machine Learning</span><span>Big Data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="stage-label">Experience</div>
+      <h2>Coursework & research</h2>
+      <p class="lede">Academic projects that mirror real-world data science work, end to end.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">Ongoing</div>
+      <div class="entry-body">
+        <h3>Data Intensive Computing — Course Project</h3>
+        <div class="entry-org">TU Wien</div>
+        <ul>
+          <li>Built a MapReduce chi-square feature selection job on a university Hadoop cluster</li>
+          <li>Replicated the pipeline in PySpark, then built a Spark ML classifier with ChiSqSelector and grid search</li>
+          <li>Designed a serverless AWS review-processing pipeline (Lambda, DynamoDB) on LocalStack</li>
+        </ul>
+        <div class="entry-tags">
+          <span>MRJob</span><span>PySpark</span><span>AWS Lambda</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">Ongoing</div>
+      <div class="entry-body">
+        <h3>Statistical Computing (AKSTA)</h3>
+        <div class="entry-org">TU Wien</div>
+        <ul>
+          <li>Built an interactive R Shiny app visualizing CIA World Factbook indicators with choropleth maps</li>
+          <li>Worked extensively with tidy data reshaping, closures, lexical scoping, and ggplot2</li>
+        </ul>
+        <div class="entry-tags">
+          <span>R</span><span>Shiny</span><span>ggplot2</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">Ongoing</div>
+      <div class="entry-body">
+        <h3>Social Media &amp; Academic Productivity — Research Study</h3>
+        <div class="entry-org">Survey Research Project</div>
+        <ul>
+          <li>Designed survey questions mapped directly to research hypotheses</li>
+          <li>Structured a multi-author R Markdown report analyzing the results</li>
+        </ul>
+        <div class="entry-tags">
+          <span>Survey Design</span><span>R Markdown</span>
+        </div>
       </div>
     </div>
   </div>
@@ -281,9 +300,8 @@
 <section id="skills">
   <div class="wrap">
     <div class="section-head">
-      <div class="stage-label">02 · Transform</div>
-      <h2>Skills</h2>
-      <p class="lede">The tools I reach for across the pipeline — from raw data to deployed result.</p>
+      <div class="stage-label">Skills</div>
+      <h2>What I work with</h2>
     </div>
     <div class="skill-groups">
       <div class="skill-group">
@@ -317,57 +335,13 @@
 <section id="projects">
   <div class="wrap">
     <div class="section-head">
-      <div class="stage-label">03 · Analyze</div>
-      <h2>Projects</h2>
-      <p class="lede">A few things I've built, each shown at the stage of the pipeline it represents.</p>
+      <div class="stage-label">Projects</div>
+      <h2>Things I've built</h2>
+      <p class="lede">Self-directed projects outside of coursework.</p>
     </div>
 
     <div class="project">
-      <div class="project-stage"><b>Research</b>Survey &amp; statistics</div>
-      <div>
-        <h3>Social Media &amp; Academic Productivity Study</h3>
-        <p>A survey research project examining how social media usage relates to academic productivity — designing survey questions mapped directly to hypotheses, then analyzing results in a structured, multi-author R Markdown report.</p>
-        <div class="stack-row">
-          <span>R Markdown</span><span>Survey Design</span><span>Hypothesis Testing</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-stage"><b>Visualize</b>Interactive dashboard</div>
-      <div>
-        <h3>CIA World Factbook Explorer</h3>
-        <p>An R Shiny app visualizing global development indicators from the CIA World Factbook 2020, with choropleth maps, univariate and multivariate exploration tabs, and an interactive data table.</p>
-        <div class="stack-row">
-          <span>R Shiny</span><span>ggplot2</span><span>Choropleth Mapping</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-stage"><b>Model</b>Classification &amp; ML</div>
-      <div>
-        <h3>PySpark Classification &amp; Feature Selection</h3>
-        <p>An RDD-based chi-square replication and a Spark ML pipeline using ChiSqSelector for feature selection, feeding into a multi-class LinearSVC classifier with OneVsRest and grid search tuning.</p>
-        <div class="stack-row">
-          <span>PySpark</span><span>Spark ML</span><span>Feature Selection</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-stage"><b>Deploy</b>Cloud pipeline</div>
-      <div>
-        <h3>Amazon Review Processing Pipeline</h3>
-        <p>A serverless AWS pipeline built on LocalStack that processes Amazon product reviews through chained Lambda functions — preprocessing, profanity checking, and sentiment analysis — with results persisted to DynamoDB.</p>
-        <div class="stack-row">
-          <span>AWS Lambda</span><span>LocalStack</span><span>DynamoDB</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-stage"><b>Collect</b>Crowdsourced data</div>
+      <div class="project-tag">Research tool</div>
       <div>
         <h3>NepaliVoice</h3>
         <p>A crowdsourced voice recording platform designed to improve Whisper's speech recognition performance for Nepali — an underrepresented language in current ASR datasets — built as a full-stack prototype.</p>
@@ -377,15 +351,25 @@
       </div>
     </div>
 
+    <div class="project">
+      <div class="project-tag">Mobile app</div>
+      <div>
+        <h3>Bill Scanner</h3>
+        <p>A local-first mobile app for scanning and categorizing bills using on-device OCR, with AI-assisted categorization and local storage — built to solve a personal pain point around tracking purchases.</p>
+        <div class="stack-row">
+          <span>ML Kit OCR</span><span>SQLite</span><span>On-device AI</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
-    <div class="stage-label">04 · Deploy</div>
+    <div class="stage-label">Contact</div>
     <div class="contact-panel">
       <h2>Let's connect</h2>
-      <p class="lede">Open to internships, research collaborations, or just talking about data pipelines.</p>
+      <p class="lede">Open to internships, research collaborations, or just talking about data science.</p>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:youremail@example.com">Email me</a>
         <a class="btn btn-ghost" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
@@ -398,32 +382,6 @@
 <footer>
   built &amp; deployed on GitHub Pages
 </footer>
-
-<script>
-  const stages = document.querySelectorAll('.stage');
-  const sections = [...stages].map(s => document.getElementById(s.dataset.target));
-  const fill = document.getElementById('pipelineFill');
-
-  stages.forEach(s => {
-    s.addEventListener('click', () => {
-      document.getElementById(s.dataset.target).scrollIntoView({behavior:'smooth'});
-    });
-  });
-
-  function updateActive(){
-    let activeIndex = 0;
-    sections.forEach((sec, i) => {
-      const rect = sec.getBoundingClientRect();
-      if(rect.top < window.innerHeight * 0.4) activeIndex = i;
-    });
-    stages.forEach((s, i) => s.classList.toggle('active', i === activeIndex));
-    const pct = (activeIndex / (stages.length - 1)) * 100;
-    fill.style.width = pct + '%';
-  }
-
-  window.addEventListener('scroll', updateActive, {passive:true});
-  updateActive();
-</script>
 
 </body>
 </html>
