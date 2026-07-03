@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
   :root{
     --bg: #FAF9F5;
@@ -310,6 +311,15 @@
     </div>
   </div>
 </section>
+<section id="timeline">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="stage-label">Timeline</div>
+      <h2>The path so far</h2>
+    </div>
+    <div id="timeline-chart"></div>
+  </div>
+</section>
 
 <section id="skills">
   <div class="wrap">
@@ -398,4 +408,69 @@
 </footer>
 
 </body>
+<script>
+  // EDIT THIS DATA — one entry per milestone. type is "education" or "experience"
+  const timelineData = [
+    { year: 2021, label: "Bachelor's Degree",        type: "education" },
+    { year: 2024, label: "Started TU Wien — MSc Data Science", type: "education" },
+    { year: 2025, label: "Data Intensive Computing",  type: "experience" },
+    { year: 2025, label: "NepaliVoice",               type: "experience" },
+    { year: 2026, label: "Statistical Computing (AKSTA)", type: "experience" }
+  ];
+
+  const container = document.getElementById('timeline-chart');
+  const width = container.clientWidth;
+  const height = 200;
+  const margin = { top: 40, right: 30, bottom: 20, left: 30 };
+
+  const svg = d3.select('#timeline-chart')
+    .append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .attr('width', '100%')
+    .attr('height', height);
+
+  const years = timelineData.map(d => d.year);
+  const x = d3.scaleLinear()
+    .domain([d3.min(years) - 0.5, d3.max(years) + 0.5])
+    .range([margin.left, width - margin.right]);
+
+  const midY = height / 2;
+
+  // baseline
+  svg.append('line')
+    .attr('x1', margin.left).attr('x2', width - margin.right)
+    .attr('y1', midY).attr('y2', midY)
+    .attr('stroke', '#E4E1D6').attr('stroke-width', 1);
+
+  const groups = svg.selectAll('.milestone')
+    .data(timelineData)
+    .enter()
+    .append('g')
+    .attr('transform', (d, i) => `translate(${x(d.year)}, ${midY})`);
+
+  groups.append('line')
+    .attr('y1', 0)
+    .attr('y2', (d, i) => i % 2 === 0 ? -34 : 34)
+    .attr('stroke', '#E4E1D6').attr('stroke-width', 1);
+
+  groups.append('circle')
+    .attr('r', 5)
+    .attr('fill', d => d.type === 'education' ? '#545F87' : '#4E7A64');
+
+  groups.append('text')
+    .attr('y', (d, i) => i % 2 === 0 ? -42 : 50)
+    .attr('text-anchor', 'middle')
+    .attr('font-family', 'IBM Plex Mono, monospace')
+    .attr('font-size', '10px')
+    .attr('fill', '#6B6F7E')
+    .text(d => d.year);
+
+  groups.append('text')
+    .attr('y', (d, i) => i % 2 === 0 ? -56 : 64)
+    .attr('text-anchor', 'middle')
+    .attr('font-family', 'IBM Plex Sans, sans-serif')
+    .attr('font-size', '12px')
+    .attr('fill', '#21242E')
+    .text(d => d.label);
+</script>
 </html>
