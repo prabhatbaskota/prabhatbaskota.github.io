@@ -190,18 +190,16 @@
     font-size:11px; color:var(--text-muted); letter-spacing:.05em;
   }
 
-  .entry-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
+  .entry-link{
+    text-decoration:none;
+    color:inherit;
+    display:block;
   }
-
-  .entry-link:hover .entry {
-  background-color: #f5f5f5;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  .entry-link:hover .entry{
+    background-color:var(--bg-panel-raised);
+    cursor:pointer;
+    transition:background-color 0.2s ease;
   }
-
 </style>
 </head>
 <body>
@@ -245,10 +243,10 @@
         <div class="entry-org">Masters in Data Science, Austria</div>
         <ul>
           <li>Coursework spanning statistical computing, machine learning, databases, and large-scale data processing</li>
-          <li>Hands-on work with Machine learning Algorithm, Hadoop clusters, PySpark, and serverless AWS pipelines</li>
+          <li>Hands-on work with machine learning algorithms, Hadoop clusters, PySpark, and serverless AWS pipelines</li>
         </ul>
         <div class="entry-tags">
-          <span>Machine Learning</span><span>Statistical Computing</span><span>Databases</span><span>Machine Learning</span><span>Big Data</span>
+          <span>Machine Learning</span><span>Statistical Computing</span><span>Databases</span><span>Big Data</span>
         </div>
       </div>
     </div>
@@ -326,6 +324,7 @@
     </a>
   </div>
 </section>
+
 <section id="timeline">
   <div class="wrap">
     <div class="section-head">
@@ -421,6 +420,7 @@
 <footer>
   built &amp; deployed on GitHub Pages
 </footer>
+
 <script>
   // EDIT THIS DATA — one entry per milestone. type is "education" or "experience"
   const timelineData = [
@@ -449,7 +449,6 @@
 
   const midY = height / 2;
 
-  // baseline
   svg.append('line')
     .attr('x1', margin.left).attr('x2', width - margin.right)
     .attr('y1', midY).attr('y2', midY)
@@ -488,5 +487,4 @@
 </script>
 
 </body>
-
 </html>
