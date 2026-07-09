@@ -190,16 +190,17 @@
     font-size:11px; color:var(--text-muted); letter-spacing:.05em;
   }
 
-  .entry-link{
-    text-decoration:none;
-    color:inherit;
-    display:block;
-  }
-  .entry-link:hover .entry{
-    background-color:var(--bg-panel-raised);
-    cursor:pointer;
-    transition:background-color 0.2s ease;
-  }
+  .entry-links{
+  display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;
+}
+.entry-links a{
+  font-family:var(--font-mono); font-size:11px; color:var(--sage);
+  border:1px solid rgba(78,122,100,0.28); padding:5px 11px; border-radius:3px;
+  transition:background-color 0.2s ease;
+}
+.entry-links a:hover{
+  background-color:var(--bg-panel-raised);
+}
 </style>
 </head>
 <body>
