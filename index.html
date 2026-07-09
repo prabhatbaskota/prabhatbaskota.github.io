@@ -58,10 +58,7 @@
     letter-spacing:.06em; text-transform:uppercase; transition:color .2s ease;
   }
   .nav-links a:hover{ color:var(--sage); }
-  .nav-toggle{ display:none; }
-  @media(max-width:640px){
-    .nav-links{ display:none; }
-  }
+  @media(max-width:640px){ .nav-links{ display:none; } }
 
   /* ---------- Hero / Intro ---------- */
   .hero{ padding:100px 0 70px; }
@@ -103,15 +100,8 @@
     font-family:var(--font-display); font-size:clamp(1.5rem, 3vw, 2rem);
     font-weight:600;
   }
-  .lede{ color:var(--text-muted); max-width:600px; margin-top:14px; }
 
-  /* ---------- Education & Experience (resume-style entries) ---------- */
-    #experience {
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
+  /* ---------- Entries (Education/Experience) ---------- */
   .entry{
     display:grid; grid-template-columns:1fr; gap:6px;
     padding:26px 0; border-bottom:1px solid var(--border);
@@ -181,6 +171,13 @@
     font-family:var(--font-mono); font-size:11px; color:var(--slate);
     border:1px solid rgba(84,95,135,0.28); padding:4px 9px; border-radius:3px;
   }
+  .entry-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .entry-links a{
+    font-family:var(--font-mono); font-size:11px; color:var(--sage);
+    border:1px solid rgba(78,122,100,0.28); padding:5px 11px; border-radius:3px;
+    transition:background-color 0.2s ease;
+  }
+  .entry-links a:hover{ background-color:var(--bg-panel-raised); }
 
   /* ---------- Contact ---------- */
   .contact-panel{
@@ -188,25 +185,13 @@
     padding:44px;
   }
   .contact-panel h2{ margin-bottom:14px; }
-  .contact-panel .lede{ margin-bottom:30px; }
+  .contact-panel .lede{ color:var(--text-muted); margin-bottom:30px; }
   .contact-links{ display:flex; flex-wrap:wrap; gap:14px; }
 
   footer{
     padding:36px 0; text-align:center; font-family:var(--font-mono);
     font-size:11px; color:var(--text-muted); letter-spacing:.05em;
   }
-
-  .entry-links{
-  display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;
-}
-.entry-links a{
-  font-family:var(--font-mono); font-size:11px; color:var(--sage);
-  border:1px solid rgba(78,122,100,0.28); padding:5px 11px; border-radius:3px;
-  transition:background-color 0.2s ease;
-}
-.entry-links a:hover{
-  background-color:var(--bg-panel-raised);
-}
 </style>
 </head>
 <body>
@@ -242,7 +227,6 @@
       <div class="stage-label">Education</div>
       <h2>Where I've studied</h2>
     </div>
-
     <div class="entry">
       <div class="entry-meta">2025 — Present</div>
       <div class="entry-body">
@@ -274,16 +258,12 @@
   </div>
 </section>
 
-
-
-
 <section id="experience">
   <div class="wrap">
     <div class="section-head">
       <div class="stage-label">Experience</div>
       <h2>Work & Projects</h2>
     </div>
-
     <div class="entry">
       <div class="entry-meta">Ongoing</div>
       <div class="entry-body">
@@ -302,7 +282,6 @@
         </div>
       </div>
     </div>
-
     <div class="entry">
       <div class="entry-meta">Ongoing</div>
       <div class="entry-body">
@@ -321,7 +300,6 @@
         </div>
       </div>
     </div>
-
     <div class="entry">
       <div class="entry-meta">Ongoing</div>
       <div class="entry-body">
@@ -390,33 +368,38 @@
 
 <section id="projects">
   <div class="wrap">
-    <div class="project-tag">Research tool</div>
-    <div>
-      <h3>NepaliVoice</h3>
-      <p>A crowdsourced voice recording platform designed to improve Whisper's speech recognition performance for Nepali — an underrepresented language in current ASR datasets — built as a full-stack prototype.</p>
-      <div class="stack-row">
-        <span>FastAPI</span><span>PostgreSQL</span><span>OpenSLR-54</span>
-      </div>
-      <div class="entry-links">
-        <a href="PASTE_REPO_LINK" target="_blank" rel="noopener">Repo →</a>
-        <a href="PASTE_LIVE_LINK" target="_blank" rel="noopener">Live →</a>
+    <div class="section-head">
+      <div class="stage-label">Projects</div>
+      <h2>Selected work</h2>
+    </div>
+    <div class="project">
+      <div class="project-tag">Research tool</div>
+      <div>
+        <h3>NepaliVoice</h3>
+        <p>A crowdsourced voice recording platform designed to improve Whisper's speech recognition performance for Nepali.</p>
+        <div class="stack-row">
+          <span>FastAPI</span><span>PostgreSQL</span><span>OpenSLR-54</span>
+        </div>
+        <div class="entry-links">
+          <a href="PASTE_REPO_LINK" target="_blank" rel="noopener">Repo →</a>
+          <a href="PASTE_LIVE_LINK" target="_blank" rel="noopener">Live →</a>
+        </div>
       </div>
     </div>
-</div>
-
-<div class="project">
-  <div class="project-tag">Mobile app</div>
-  <div>
-    <h3>Bill Scanner</h3>
-    <p>A local-first mobile app for scanning and categorizing bills using on-device OCR, with AI-assisted categorization and local storage — built to solve a personal pain point around tracking purchases.</p>
-    <div class="stack-row">
-      <span>ML Kit OCR</span><span>SQLite</span><span>On-device AI</span>
-    </div>
-    <div class="entry-links">
-      <a href="PASTE_REPO_LINK" target="_blank" rel="noopener">Repo →</a>
+    <div class="project">
+      <div class="project-tag">Mobile app</div>
+      <div>
+        <h3>Bill Scanner</h3>
+        <p>A local-first mobile app for scanning and categorizing bills using on-device OCR, with AI-assisted categorization and local storage.</p>
+        <div class="stack-row">
+          <span>ML Kit OCR</span><span>SQLite</span><span>On-device AI</span>
+        </div>
+        <div class="entry-links">
+          <a href="PASTE_REPO_LINK" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <section id="contact">
@@ -442,8 +425,8 @@
   const timelineData = [
     { year: 2019, label: "BE Industrial Engineering — Thapathali", type: "education" },
     { year: 2024, label: "Started TU Wien — MSc Data Science", type: "education" },
-    { year: 2025, label: "Data Intensive Computing",  type: "experience" },
-    { year: 2025, label: "NepaliVoice",               type: "experience" },
+    { year: 2025, label: "Data Intensive Computing", type: "experience" },
+    { year: 2025, label: "NepaliVoice", type: "experience" },
     { year: 2026, label: "Statistical Computing (AKSTA)", type: "experience" }
   ];
 
@@ -458,7 +441,6 @@
     .attr('width', '100%')
     .attr('height', height);
 
-  // evenly spaced by index, not by actual year — prevents overlap when years repeat
   const x = d3.scalePoint()
     .domain(timelineData.map((d, i) => i))
     .range([marginX, width - marginX])
@@ -503,7 +485,6 @@
     .text(d => d.label)
     .call(wrapText, 90);
 
-  // wraps long labels onto multiple lines so they don't overlap neighboring milestones
   function wrapText(text, maxWidth){
     text.each(function(){
       const el = d3.select(this);
